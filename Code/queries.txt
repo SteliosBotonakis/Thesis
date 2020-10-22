@@ -1,0 +1,143 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ex: <http://example.org/data/>				
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>				
+PREFIX ssn: <http://www.w3.org/ns/ssn/>				
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX ex: <http://example.org/data/>
+PREFIX time: <http://www.w3.org/2006/time/>
+PREFIX tourism: <http://sensormeasurement.appspot.com/ont/m3/tourism#>
+PREFIX home: <http://sensormeasurement.appspot.com/ont/m3/home#>
+SELECT ?o FROM <http://147.27.60.65/sensorOntology> WHERE {exob:346344 sosa:resultTime ?x.
+?x time:hasBeginning ?y.
+?y time:inXSDDateTimeStamp ?o}
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX ex: <http://example.org/data/>
+SELECT * 
+FROM NAMED <http://147.27.60.65/sensorOntology>
+FROM NAMED <http://147.27.60.65/sensorOntology1>
+FROM NAMED <http://147.27.60.65/sensorOntology2>
+WHERE {
+GRAPH ?g {ex:Home200 ?p ?o}
+}
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?s ?o FROM <http://147.27.60.65/sensorOntology> WHERE {?s sosa:hosts ?o}
+
+
+INSERT IN GRAPH <http://147.27.60.65/sensorOntology> {<http://example.org/data/Observation/346344> <http://www.w3.org/ns/sosa/resultTime>  "2015-06-06T12:36:12Z"}
+
+
+WITH <http://147.27.60.65/sensorOntologyHistory> 
+DELETE {<http://example.org/data/BMP282Observation> <http://www.w3.org/ns/sosa/hasSimpleResult> ?o} 
+WHERE 
+  {<http://example.org/data/BMP282Observation> <http://www.w3.org/ns/sosa/hasSimpleResult> ?o} 
+
+  
+  
+  
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX ex: <http://example.org/data/>
+PREFIX exob: <http://example.org/data/Observation/>
+PREFIX time: <http://www.w3.org/2006/time/>
+INSERT IN GRAPH <http://147.27.60.65/sensorOntology> {ex:Instant1 <http://www.w3.org/2006/time/inXSDDateTimeStamp>  "2005-11-05T18:00:00-5:00"}
+
+
+
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?p ?o ?s1 ?p1 FROM <http://147.27.60.65/sensorOntology> WHERE {<http://example.org/data/sensor/35-207306-844818-0/BMP282/atmosphericPressure> ?p ?o.
+?s1 ?p1 <http://example.org/data/sensor/35-207306-844818-0/BMP282/atmosphericPressure>}
+
+
+
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?s ?p ?o FROM <http://147.27.60.65/sensorOntology> WHERE {?s rdf:type owl:NamedIndividual.
+?o rdf:type owl:NamedIndividual.
+?s ?p ?o}
+
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?s ?p FROM <http://147.27.60.65/sensorOntology> WHERE {?s rdf:type owl:NamedIndividual.
+?p rdf:type owl:DatatypeProperty.
+?s ?p ?o}
+
+
+
+
+
+
+
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?s ?o FROM <http://147.27.60.65/sensorOntology> WHERE {?o rdf:type owl:Class.
+?s rdf:type ?o}
+
+
+
+DELETE FROM GRAPH <http://147.27.60.65/sensorOntology> {ex:Instant1 <http://www.w3.org/2006/time/inXSDDateTimeStamp>  "2017-11-05T18:00:00-5:00"}
+
+
+
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?x ?p1 ?s ?p ?o FROM <http://147.27.60.65/sensorOntology> WHERE {?x rdf:type owl:NamedIndividual.
+?p1 rdf:type owl:ObjectProperty.
+?x ?p1 ?s.
+?s rdf:type owl:NamedIndividual.
+?p rdf:type owl:DatatypeProperty.
+?s ?p ?o}
+
+
+
+
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?x1 ?p2 ?x ?p1 ?s ?p ?o FROM <http://147.27.60.65/sensorOntology> WHERE {?x1 rdf:type owl:NamedIndividual.
+?p2 rdf:type owl:ObjectProperty.
+?x1 ?p2 ?x.
+?x rdf:type owl:NamedIndividual.
+?p1 rdf:type owl:ObjectProperty.
+?x ?p1 ?s.
+?s rdf:type owl:NamedIndividual.
+?p rdf:type owl:DatatypeProperty.
+?s ?p ?o}
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?s ?lbl FROM <http://147.27.60.65/sensorOntology> WHERE {?s rdfs:label ?lbl.
+FILTER regex(?lbl, "Sensor", "i")}
+
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?s ?c ?p ?o FROM <http://147.27.60.65/sensorOntology> WHERE {?p rdf:type owl:DatatypeProperty.
+?s rdf:type owl:NamedIndividual.
+?c rdf:type owl:Class.
+?s rdf:type ?c.
+?s ?p ?o}
+
+
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX ex: <http://example.org/data/>
+PREFIX time: <http://www.w3.org/2006/time/>
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+INSERT IN GRAPH <http://147.27.60.65/sensorOntology> {ex:City3  rdf:type geo:SpatialThing.
+ex:City3  geo:lat 45.8 .
+ex:PCBBoard2 sosa:hasLocation ex:City3}
+
+SELECT ?s ?c  ?p ?o ?c2 FROM <http://147.27.60.65/sensorOntology> WHERE {?s rdf:type owl:NamedIndividual.
+?p rdf:type owl:ObjectProperty.
+?c rdf:type owl:Class.
+?s rdf:type ?c.
+?c2 rdf:type owl:Class.
+?o rdf:type ?c2.
+?s ?p ?o}
+
+
+PREFIX tourism: <http://sensormeasurement.appspot.com/ont/m3/tourism#>
+SELECT DISTINCT ?t FROM <http://147.27.60.65/sensorOntologyReasoner> WHERE {?s rdf:type ?t.
+FILTER( STRSTARTS(STR(?t),str(tourism:)) )}
+
